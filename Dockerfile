@@ -1,10 +1,22 @@
-FROM ubuntu 
-RUN apt-get update 
-RUN apt-get install –y apache2 
-RUN apt-get install –y apache2-utils 
-RUN apt-get clean 
-EXPOSE 80 
-CMD [“apache2ctl”, “-D”, “FOREGROUND”]
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y apache2
+
+RUN echo "<html><body><h1>Hello</h1></body></html>" > /var/www/html/index.html
+
+EXPOSE 80
+
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+
+
+
+# FROM ubuntu 
+# RUN apt-get update 
+# RUN apt-get install –y apache2 
+# RUN apt-get install –y apache2-utils 
+# RUN apt-get clean 
+# EXPOSE 80 
+# CMD [“apache2ctl”, “-D”, “FOREGROUND”]
 
 
 # FROM  centos:latest
